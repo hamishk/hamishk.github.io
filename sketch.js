@@ -7,10 +7,17 @@ let terminalVelocity = 50;
 let restituion = 1; // ratio of how much energy is conserved with each bounce
 let bgColor = [50,50,50]; // grey
 let bgColorChanges = 0;
+let titleOverlay
 
 
 function setup() {
 	createCanvas(canvasWidth, canvasHeight);
+  titleOverlay = createElement('h1',"Hamish Kerr's Professional Website");
+  titleOverlay.style('font-family','Comic Sans MS');
+  titleOverlay.style('color','#fff');
+  titleOverlay.style('user-select','none');
+  titleOverlay.position(50,150);
+  titleOverlay.style('text-align','center')
 }
 
 function draw() {
