@@ -17,13 +17,8 @@ function setup() {
 
 function draw() {
   background(bgColor);
-  getCanvasWidths();
+  resizeIfNeeded();
   updateBalls();
-}
-
-function getCanvasWidths() {
-  canvasWidth = window.innerWidth; 
-  canvasHeight = window.innerHeight;
 }
 
 function updateBalls() {
@@ -46,12 +41,15 @@ function keyPressed() {
   } else {
     bgColor = [random(0,255),random(0,255),random(0,255)]
   }
-
 }
 
-function windowResized() {
-  resizeCanvas(canvasWidth, canvasHeight);
-  console.log('resizing');
+function resizeIfNeeded() {
+  if (canvasWidth != window.innerWidth || canvasHeight != window.innerHeight) {
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+    resizeCanvas(canvasWidth,canvasHeight);
+    console.log('resizing');
+  }
 }
 
 class Ball {
