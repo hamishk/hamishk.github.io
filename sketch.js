@@ -20,6 +20,7 @@ function draw() {
   getCanvasWidths();
   updateBalls();
 }
+
 function getCanvasWidths() {
   canvasWidth = window.innerWidth; 
   canvasHeight = window.innerHeight;
@@ -50,6 +51,7 @@ function keyPressed() {
 
 function windowResized() {
   resizeCanvas(canvasWidth, canvasHeight);
+  console.log('resizing');
 }
 
 class Ball {
