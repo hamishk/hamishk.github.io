@@ -1,6 +1,6 @@
 // Gonna make some balls bounce
-let canvasWidth = window.innerWidth; //600;
-let canvasHeight = window.innerHeight; //400;
+let canvasWidth = window.innerWidth; 
+let canvasHeight = window.innerHeight;
 let balls = [];
 let gravity = .6;
 let terminalVelocity = 50;
@@ -11,18 +11,18 @@ let titleOverlay
 
 
 function setup() {
-	createCanvas(canvasWidth, canvasHeight);
-  titleOverlay = createElement('h1',"Hamish Kerr's Professional Website");
-  titleOverlay.style('font-family','Comic Sans MS');
-  titleOverlay.style('color','#fff');
-  titleOverlay.style('user-select','none');
-  titleOverlay.position(50,150);
-  titleOverlay.style('text-align','center')
+  createElement('h1',"Hamish Kerr's Professional Website");
+  createCanvas(canvasWidth, canvasHeight);
 }
 
 function draw() {
   background(bgColor);
+  getCanvasWidths();
   updateBalls();
+}
+function getCanvasWidths() {
+  canvasWidth = window.innerWidth; 
+  canvasHeight = window.innerHeight;
 }
 
 function updateBalls() {
@@ -46,6 +46,10 @@ function keyPressed() {
     bgColor = [random(0,255),random(0,255),random(0,255)]
   }
 
+}
+
+function windowResized() {
+  resizeCanvas(canvasWidth, canvasHeight);
 }
 
 class Ball {
