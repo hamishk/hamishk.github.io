@@ -2,9 +2,9 @@
 let canvasWidth = window.innerWidth; 
 let canvasHeight = window.innerHeight;
 let balls = [];
-let gravity = .6;
+let gravity = .7;
 let terminalVelocity = 50;
-let restituion = 1; // ratio of how much energy is conserved with each bounce
+let restituion = .95; // ratio of how much energy is conserved with each bounce
 let bgColor = [50,50,50]; // grey
 let bgColorChanges = 0;
 let titleOverlay

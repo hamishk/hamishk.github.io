@@ -5,7 +5,7 @@ class Ball {
     this.diameter = 20;
     this.color = [random(127,255),random(0,255),random(127,255)];
     this.alpha = 255;
-    this.xVel = random(-5,5); // ball starts with random x velocity
+    this.xVel = random(-10,10); // ball starts with random x velocity
     this.yVel = -10; //random(0,-10); // ball starts with random y velocity
   }
 
@@ -19,6 +19,8 @@ class Ball {
     this.x = this.x + this.xVel;
     if (this.x >= canvasWidth || this.x <= 0) {
       this.xVel = -restituion * this.xVel; // bounce when hits a wall
+      if (this.x >= canvasWidth) {this.x = canvasWidth} else {this.x = 0}
+        // make sure they stay in bounds
     }
   }
 
@@ -38,7 +40,7 @@ class Ball {
 
   fadeOnFloor() {
     if (this.y == canvasHeight) {
-      this.alpha--;
+      this.alpha -= 4;
     }
   }
 
