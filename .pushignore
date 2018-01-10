@@ -1,0 +1,5 @@
+# things that shouldn't be pushed to the server
+.DS*
+.git*
+push.sh
+.pushignore
