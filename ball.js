@@ -12,7 +12,9 @@ class Ball {
   refresh() {
     this.refreshX();
     this.refreshY();
-    this.fadeOnFloor();
+    if (this.isOnFloor()) {
+      this.fade();
+    }
   }
   
   refreshX() {
@@ -38,10 +40,12 @@ class Ball {
     }
   }
 
-  fadeOnFloor() {
-    if (this.y == canvasHeight) {
-      this.alpha -= 4;
-    }
+  isOnFloor() {
+    return this.y == canvasHeight;
+  }
+  
+  fade() {
+    this.alpha -= 4;
   }
 
   show() {
