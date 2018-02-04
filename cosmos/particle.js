@@ -5,9 +5,8 @@ class Particle {
   }
 
   update() {
-    this.x += random(-10,10);
-    this.y += random(-10,10);
-
+    this.x += random(-8,8);
+    this.y += random(-8,8);
     this.x = constrain(this.x, 0, canvasWidth);
     this.y = constrain(this.y, 0, canvasHeight);
   }
