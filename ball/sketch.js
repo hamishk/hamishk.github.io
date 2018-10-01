@@ -7,11 +7,17 @@ let terminalVelocity = 50;
 let restituion = .95; // ratio of how much energy is conserved with each bounce
 let bgColor = [50,50,50]; // grey
 let bgColorChanges = 0;
-let titleOverlay
+let titleOverlay;
+let ballCounter;
+let nextLevelLink;
+let fadeTitle = false; // title begins fading on first mouse press
+let ballsNeeded = 30; // number of balls needed to reveal next level
 
 
 function setup() {
-  createElement('h1',"Hamish Kerr's Professional Website");
+  titleOverlay = createElement('h1',"Hamish Kerr's Professional Website"); // Fades after click
+  ballCounter = createElement('h2',"0");  // Starts hidden; revealed after first click
+  nextLevelLink = createA('/cosmos','Explore the galaxy'); // Go to next stage
   createCanvas(canvasWidth, canvasHeight);
 }
 
@@ -19,6 +25,7 @@ function draw() {
   background(bgColor);
   resizeIfNeeded();
   updateBalls();
+  updateText();
 }
 
 function updateBalls() {
@@ -27,13 +34,36 @@ function updateBalls() {
     if (balls[i].alpha <= 0) {
       balls.splice(i,1); // remove invisible balls
     } else {
-      balls[i].show(); //render all balls
+      balls[i].show(); //render balls
     }
   }
 }
 
+function updateText() {
+  updateCounter(balls.length);
+  if (fadeTitle) updateTitle();
+  if (balls.length >= ballsNeeded) showNextLevel();
+}
+
+function updateCounter(count) {
+  ballCounter.html(count); // update the ball counter with the latest value 
+}
+
+function updateTitle() {
+  if (titleOverlay.style('opacity') > 0) { 
+    let newOpacity = titleOverlay.style('opacity') - 0.01; 
+    titleOverlay.style('opacity',newOpacity); // fade 1% each frame while visible
+  }
+}
+
+function showNextLevel() {
+  nextLevelLink.style('display','block'); // reveal next level
+}
+
 function mousePressed() {
-  balls.push(new Ball(mouseX,mouseY));
+  balls.push(new Ball(mouseX,mouseY)); // make a new ball appear at the mouse location
+  fadeTitle = true; // begin or continue fading title 
+  ballCounter.style('display','block'); // make sure counter appears
 }
 
 function keyPressed() {

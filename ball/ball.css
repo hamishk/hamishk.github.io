@@ -21,3 +21,27 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  font-family: 'Ariel', sans-serif;
+  z-index: 1;
+  color: white;
+  user-select: none;
+  text-align: center;
+  display: none;
+}
+
+a {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  font-family: 'Impact', sans-serif;
+  z-index: 1;
+  color: #493aea;
+  user-select: none;
+  text-align: center;
+  display: none;
+  font-size: 36px;
+}
