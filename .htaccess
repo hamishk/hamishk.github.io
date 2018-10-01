@@ -1,1 +1,1 @@
-RedirectMatch 302 ^/?$ /cosmos/
+RedirectMatch 302 ^/?$ /ball/
