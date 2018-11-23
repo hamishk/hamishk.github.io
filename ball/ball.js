@@ -16,7 +16,7 @@ class Ball {
       this.fade();
     }
   }
-  
+
   refreshX() {
     this.x = this.x + this.xVel;
     if (this.x >= canvasWidth || this.x <= 0) {
@@ -36,14 +36,14 @@ class Ball {
       this.y = canvasHeight; // don't let the ball go outside the screen limits
     }
     if (this.y >= canvasHeight) {
-      this.yVel = -restituion * this.yVel; // bounce when hits edge of screen 
+      this.yVel = -restituion * this.yVel; // bounce when hits edge of screen
     }
   }
 
   isOnFloor() {
     return this.y == canvasHeight;
   }
-  
+
   fade() {
     this.alpha -= 4;
   }
