@@ -1,10 +1,10 @@
 // Gonna make some balls bounce
-let canvasWidth = window.innerWidth; 
+let canvasWidth = window.innerWidth;
 let canvasHeight = window.innerHeight;
 let balls = [];
 let gravity = .7;
 let terminalVelocity = 50;
-let restituion = .95; // ratio of how much energy is conserved with each bounce
+let restituion = .95; // proportion of how much energy is conserved with each bounce
 let bgColor = [50,50,50]; // grey
 let bgColorChanges = 0;
 let titleOverlay;
@@ -17,7 +17,7 @@ let ballsNeeded = 30; // number of balls needed to reveal next level
 function setup() {
   titleOverlay = createElement('h1',"Hamish Kerr's Professional Website"); // Fades after click
   ballCounter = createElement('h2',"0");  // Starts hidden; revealed after first click
-  nextLevelLink = createA('/cosmos','Explore the galaxy'); // Go to next stage
+  nextLevelLink = createElement('h3',"Explore the Galaxy"); // the 'link' is actually a header
   createCanvas(canvasWidth, canvasHeight);
 }
 
@@ -46,23 +46,28 @@ function updateText() {
 }
 
 function updateCounter(count) {
-  ballCounter.html(count); // update the ball counter with the latest value 
+  ballCounter.html(count); // update the ball counter with the latest value
 }
 
 function updateTitle() {
-  if (titleOverlay.style('opacity') > 0) { 
-    let newOpacity = titleOverlay.style('opacity') - 0.01; 
+  if (titleOverlay.style('opacity') > 0) {
+    let newOpacity = titleOverlay.style('opacity') - 0.01;
     titleOverlay.style('opacity',newOpacity); // fade 1% each frame while visible
   }
 }
 
 function showNextLevel() {
   nextLevelLink.style('display','block'); // reveal next level
+  nextLevelLink.mousePressed(goToGalaxy);
+}
+
+function goToGalaxy() {
+  window.location.href = "/cosmos"; // regular href didn't work on mobile because reasons
 }
 
 function mousePressed() {
   balls.push(new Ball(mouseX,mouseY)); // make a new ball appear at the mouse location
-  fadeTitle = true; // begin or continue fading title 
+  fadeTitle = true; // begin or continue fading title
   ballCounter.style('display','block'); // make sure counter appears
 }
 
