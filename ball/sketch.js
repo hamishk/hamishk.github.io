@@ -15,7 +15,10 @@ let ballsNeeded = 30; // number of balls needed to reveal next level
 
 
 function setup() {
-  titleOverlay = createElement('h1',"Hamish Kerr's Professional Website"); // Fades after click
+  titleOverlay = createElement('h1', // Fades after click
+  "Hamish Kerr's Professional Website <br/> \
+  Now featuring HTTPS! 🔐 <br/> <br/> <br/> <br/> \
+  <img src=PUSHTOSTART.png width=100 height=100>"); 
   ballCounter = createElement('h2',"0");  // Starts hidden; revealed after first click
   nextLevelLink = createElement('h3',"Explore the Galaxy"); // the 'link' is actually a header
   createCanvas(canvasWidth, canvasHeight);
