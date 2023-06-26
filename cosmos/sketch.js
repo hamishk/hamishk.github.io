@@ -7,9 +7,15 @@ let dotdensity = 7.5 // arbitrary scale of [dots / (x * y)] *10,000
 let dotcount = canvasWidth * canvasHeight * dotdensity / 10000;
 let sliders =[]; // need access as global
 let bgCol = 0;
+let startTime;
+let countDown;
+let hasCountdownFinished = false;
+let saveTheWhalesButton;
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
+  startTime = millis();
+  countDown = 30000; // 30 seconds
   for (let i = 0; i < dotcount; i++) {
     let xOffset = getOffset(1.2, canvasWidth);
     let yOffset = getOffset(3, canvasHeight);
@@ -31,6 +37,25 @@ function draw() {
     let radius = max(minradius, random(-50,4));
     ellipse(dots[i].x, dots[i].y, radius, radius);
     dots[i].update();
+  }
+  if (!hasCountdownFinished) {
+    let timer = countDown - (millis() - startTime);
+    if (timer > 0) {
+      // Draw a rectangle over the previous timer text
+      fill(bgCol);
+      noStroke();
+      rect(width - 100, 0, 100, 50);  // Adjust the size and position according to needs
+            
+      // Now draw the new timer text
+      textSize(32);
+      fill(0, 0, 255);
+      text(int(timer / 1000), width - 50, 50); // top right of the canvas
+    } else {
+      hasCountdownFinished = true;
+      saveTheWhalesButton = createButton('Save The Whales');
+      saveTheWhalesButton.position(width - 150, 20);
+      saveTheWhalesButton.mousePressed(() => window.open('http://www.deepseadairy.com', '_blank'));
+    }
   }
 }
 
