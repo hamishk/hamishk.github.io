@@ -54,7 +54,7 @@ function draw() {
       hasCountdownFinished = true;
       saveTheWhalesButton = createButton('Save The Whales');
       saveTheWhalesButton.position(width - 150, 20);
-      saveTheWhalesButton.mousePressed(() => window.open('http://www.deepseadairy.com', '_blank'));
+      saveTheWhalesButton.mousePressed(() => window.location.href = 'http://www.deepseadairy.com');
     }
   }
 }
